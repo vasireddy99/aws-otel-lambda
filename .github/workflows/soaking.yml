@@ -126,8 +126,6 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          role-to-assume: ${{ secrets.AWS_ASSUME_ROLE_ARN }}
-          mask-aws-account-id: false
           aws-region: ${{ env.AWS_DEFAULT_REGION }}
       - name: Patch ADOT
         run: ./patch-upstream.sh
@@ -263,8 +261,14 @@ jobs:
         working-directory: ${{ env.TERRAFORM_DIRECTORY }}
       - name: Destroy terraform
         if: always()
-        run: terraform destroy -auto-approve
+        uses: nick-fields/retry@v2
         working-directory: ${{ env.TERRAFORM_DIRECTORY }}
+        with:
+          timeout_minutes: 60
+          max_attempts: 3
+          retry_on: error
+          command: |
+            terraform destroy -auto-approve
   output-keywords:
     if: ${{ always() }}
     name: Output (${{ matrix.language }}, ${{ matrix.instrumentation-type }}) Layer Keyword
