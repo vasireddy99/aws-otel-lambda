@@ -112,10 +112,6 @@ jobs:
       - name: Patch ADOT
         run: ./patch-upstream.sh
       # Login to ECR since may be needed for Python build image.
-      - name: Login to Public ECR
-        uses: docker/login-action@v2
-        with:
-          registry: public.ecr.aws
       - name: Build layers / functions
         run: GOARCH=${{ matrix.architecture }} ./build.sh
         working-directory: ${{ matrix.language }}
