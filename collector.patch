@@ -1,7 +1,7 @@
-diff --git a/collector/collector.go b/collector/collector.go
+diff --git a/collector/internal/collector.go b/collector/internal/collector.go
 index 63779c3..72e0623 100644
---- a/collector/collector.go
-+++ b/collector/collector.go
+--- a/collector/internal/collector.go
++++ b/collector/internal/collector.go
 @@ -19,14 +19,12 @@ import (
  	"fmt"
  	"os"
