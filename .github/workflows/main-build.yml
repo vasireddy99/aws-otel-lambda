@@ -136,7 +136,6 @@ jobs:
     uses: ./.github/workflows/main-build-python.yml
     secrets: inherit
     with:
-      aws-region: us-east-1
       caller-workflow-name: 'main-build'
 
   java-runtime-test:
