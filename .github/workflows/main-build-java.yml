@@ -62,26 +62,32 @@ jobs:
             instrumentation-type: agent-confmap
             architecture: amd64
             confmap: s3
+            runtime: java11
           - sample-app: aws-sdk
             instrumentation-type: agent-confmap
             architecture: arm64
             confmap: s3
+            runtime: java11
           - sample-app: aws-sdk
             instrumentation-type: agent-confmap
             architecture: amd64
             confmap: http
+            runtime: java11
           - sample-app: aws-sdk
             instrumentation-type: agent-confmap
             architecture: arm64
             confmap: http
+            runtime: java11
           - sample-app: aws-sdk
             instrumentation-type: agent-confmap
             architecture: amd64
             confmap: https
+            runtime: java11
           - sample-app: aws-sdk
             instrumentation-type: agent-confmap
             architecture: arm64
             confmap: https
+            runtime: java11
 
     steps:
       - uses: actions/checkout@v4
